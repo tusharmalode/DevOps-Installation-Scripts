@@ -1,8 +1,5 @@
-#!/bin/bash
-set -e
-echo "----WORKER: JOINING K8S CLUSTER--------"
-
-read -p "Paste the kubeadm join command from master:" joincmd 
-sudo $joincmd --cri-socket unix://run/containerd/containerd.sock
-
-echo "----WORKER: SUCCESSFULLY JOINED CLUSTER-----"
+# on WORKRE NODE copy the kubeadm join <token> FROM MASTER NODE AND run.
+# ADD the following SECURITY GROUPS in both server
+# It is for kubelet i.e pod ---> pod communication ----> 10250
+# it is for API communication ---> 6443
+# you can also add 8080 if needed
